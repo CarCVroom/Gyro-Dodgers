@@ -15,15 +15,23 @@ bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGG
 const playerSprite = new Image();
 playerSprite.src = './assets/playerModel2.png';
 
-bgimg.onload = function() {
+window.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
         draw();
 }
 
+let bgY = 0;
+const bgSpeed = 0.35;
+
 function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        ctx.drawImage(bgimg, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bgimg, 0, bgY);
+        ctx.drawImage(bgimg, 0, bgY - canvas.height);
+
+        bgY += bgSpeed;
+
+        if (bgY >= canvas.height) { bgY = 0 }
 
         ctx.drawImage(playerSprite, player.x - player.radius, player.y - player.radius, player.radius * 2, player.radius * 2);
 }
@@ -36,11 +44,11 @@ window.addEventListener('deviceorientation', (e) => {
         const { alpha, beta, gamma } = e;
 
         if (e.gamma < - 15) {
-                player.x -= 3;
+                player.x -= 2;
         }
 
         if (e.gamma > 15) {
-                player.x += 3;
+                player.x += 2;
         }
         
         gammaMeter.textContent = `Gamma: ${e.gamma}`;

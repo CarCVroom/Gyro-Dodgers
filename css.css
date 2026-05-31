@@ -2,6 +2,9 @@
         display: flex;
         justify-content: center;
         text-align: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 2px;
 }
 #gameCenter {
         border: 2px solid black;
