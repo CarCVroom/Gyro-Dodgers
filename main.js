@@ -7,7 +7,7 @@ console.log(canvas.width, canvas.height);
 
 const ctx = canvas.getContext('2d');
 
-const player = { x: canvas.width/2 , y: 400, radius: 37.5 };
+const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 37.5 };
 
 const bgimg = new Image();
 bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGGOT"
