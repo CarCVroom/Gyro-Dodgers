@@ -3,14 +3,26 @@ const betaMeter = document.getElementById('betaMeter');
 const canvas = document.getElementById('gameCenter');
 canvas.width = canvas.offsetWidth;
 canvas.height = 500;
+console.log(canvas.width, canvas.height);
 
 const ctx = canvas.getContext('2d');
 
-const player = { x: 75, y: 75, radius: 37.5 };
+const player = { x: canvas.width/2 , y: 400, radius: 37.5 };
 
-function drawPlayer() {
+const bgimg = new Image();
+bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGGOT"
+
+
+bgimg.onload = function() {
+        console.log("loaded", bgimg.width, bgimg.height);
+        draw();
+}
+
+function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        ctx.drawImage(bgimg, 0, 0, canvas.width, canvas.height);
+        
         ctx.beginPath();
         ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
         ctx.fillStyle = 'red';
@@ -24,9 +36,21 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('deviceorientation', (e) => {
         const { alpha, beta, gamma } = e;
+
+        if (e.gamma < - 15) {
+                player.x -= 3;
+        }
+
+        if (e.gamma > 15) {
+                player.x += 3;
+        }
         
         gammaMeter.textContent = `Gamma: ${e.gamma}`;
         betaMeter.textContent = `Beta: ${e.beta}`;
+
+        player.x = Math.max(player.radius, Math.min(canvas.width  - player.radius, player.x));
+
+        draw();
 });
 
-drawPlayer();
+draw();
