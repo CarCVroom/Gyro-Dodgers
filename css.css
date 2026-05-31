@@ -1,0 +1,15 @@
+.title {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+}
+#gameCenter {
+        border: 2px solid black;
+        width: 90vw;
+        height: 500px;
+        display: block;
+}
+.divWithCan {
+        display: flex;
+        justify-content: center;
+}
