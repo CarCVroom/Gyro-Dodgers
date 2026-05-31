@@ -12,6 +12,8 @@ const player = { x: canvas.width/2 , y: 400, radius: 37.5 };
 const bgimg = new Image();
 bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGGOT"
 
+const playerSprite = new Image();
+playerSprite.src = './assets/playerModel2.png';
 
 bgimg.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
@@ -22,12 +24,8 @@ function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.drawImage(bgimg, 0, 0, canvas.width, canvas.height);
-        
-        ctx.beginPath();
-        ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'red';
-        ctx.lineWidth = 2;
-        ctx.fill();
+
+        ctx.drawImage(playerSprite, player.x - player.radius, player.y - player.radius, player.radius * 2, player.radius * 2);
 }
 
 window.addEventListener('resize', () => {
