@@ -26,7 +26,7 @@ window.onload = function() {
 let bgY = 0;
 const bgSpeed = 0.35;
 
-function draw() {
+function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
