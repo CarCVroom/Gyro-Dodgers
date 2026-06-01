@@ -15,6 +15,9 @@ bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGG
 const playerSprite = new Image();
 playerSprite.src = './assets/playerModel2.png';
 
+const bgimg2 = new Image();
+bgimg2.src = './assets/gameBackground2.png';
+
 window.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
         draw();
@@ -26,7 +29,7 @@ const bgSpeed = 0.35;
 function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        ctx.drawImage(bgimg, 0, bgY, canvas.width, canvas.height);
+        ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
         ctx.drawImage(bgimg, 0, bgY - canvas.height, canvas.width, canvas.height);
 
         bgY += bgSpeed;
