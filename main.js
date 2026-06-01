@@ -29,8 +29,9 @@ const bgSpeed = 0.35;
 function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        ctx.drawImage(bgimg2, 0, bgY + 1, canvas.width, canvas.height);
+        ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
         ctx.drawImage(bgimg, 0, bgY - canvas.height, canvas.width, canvas.height);
+        ctx.drawImage(bgimg2, 0, bgY + bgimg.height + bgimg2.height, canvas.width, canvas.height);
 
         bgY += bgSpeed;
 
