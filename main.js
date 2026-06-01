@@ -17,6 +17,8 @@ playerSprite.src = './assets/playerModel2.png';
 
 const bgimg2 = new Image();
 bgimg2.src = './assets/gameBackground2.png';
+const bgimg3 = new Image();
+bgimg3.src = './assets/gameBackground2.png';
 
 window.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
@@ -31,11 +33,11 @@ function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff
 
         ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
         ctx.drawImage(bgimg, 0, bgY - canvas.height, canvas.width, canvas.height);
-        ctx.drawImage(bgimg2, 0, bgY + bgimg.height + bgimg2.height, canvas.width, canvas.height);
+        ctx.drawImage(bgimg3, 0, bgY - 2 * canvas.height, canvas.width, canvas.height);
 
         bgY += bgSpeed;
 
-        if (bgY >= canvas.height) { bgY = 0 }
+        if (bgY >= 2 * canvas.height) { bgY = 0 }
 
         ctx.drawImage(playerSprite, player.x - player.radius, player.y - player.radius, player.radius * 2, player.radius * 2);
 }
