@@ -9,16 +9,15 @@ const ctx = canvas.getContext('2d');
 
 const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 37.5 };
 
-const bgimg = new Image();
-bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGGOT"
-
 const playerSprite = new Image();
 playerSprite.src = './assets/playerModel2.png';
 
+const bgimg = new Image();
+bgimg.src = './assets/gameBackground.png'; // "OMG AI IM GOING TO KILL THIS FAGGOT"
 const bgimg2 = new Image();
 bgimg2.src = './assets/gameBackground2.png';
 const bgimg3 = new Image();
-bgimg3.src = './assets/gameBackground2.png';
+bgimg3.src = './assets/gameBackground3.png';
 
 window.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
@@ -37,7 +36,7 @@ function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff
 
         bgY += bgSpeed;
 
-        if (bgY >= 2 * canvas.height) { bgY = 0 }
+        if (bgY >= 2 * canvas.height) { bgY = 0 } // omg it works bruh.
 
         ctx.drawImage(playerSprite, player.x - player.radius, player.y - player.radius, player.radius * 2, player.radius * 2);
 }
