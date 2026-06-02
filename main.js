@@ -5,6 +5,9 @@ canvas.width = canvas.offsetWidth;
 canvas.height = 500;
 console.log(canvas.width, canvas.height);
 
+let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+console.log(isMobile)
+
 const ctx = canvas.getContext('2d');
 
 const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 37.5 };
