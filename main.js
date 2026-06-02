@@ -80,7 +80,7 @@ function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff, i
 }
 
 window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth
+        canvas.width = canvas.offsetWidth // test again
 });
 
 window.addEventListener('deviceorientation', (e) => {
