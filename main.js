@@ -1,16 +1,23 @@
 const gammaMeter = document.getElementById('gammaMeter');
 const betaMeter = document.getElementById('betaMeter');
 const canvas = document.getElementById('gameCenter');
+const button = document.getElementById('controls');
 canvas.width = canvas.offsetWidth;
 canvas.height = 500;
 console.log(canvas.width, canvas.height);
 
+let inGame = false;
+
 let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 console.log(isMobile)
 
+if (!isMobile) { // checks if device is PC
+        //alert("Please use a phone")
+}
+
 const ctx = canvas.getContext('2d');
 
-const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 37.5 };
+const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 33 };
 
 const playerSprite = new Image();
 playerSprite.src = './assets/playerModel2.png';
@@ -24,13 +31,41 @@ bgimg3.src = './assets/gameBackground3.png';
 
 window.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
-        draw();
+        drawPause();
 }
 
 let bgY = 0;
 const bgSpeed = 0.35;
 
-function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff
+function drawPause() {
+        inGame = false;
+        ctx.clearRect(0,0, canvas.width, canvas.height);  
+
+        ctx.drawImage(bgimg, 0, bgY, canvas.width, canvas.height);
+        ctx.font = "65px Oxanium";
+        ctx.fillStyle = '#d7b3ff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+
+        ctx.shadowColor = '#b000ff'
+        ctx.shadowBlur = 30;
+        ctx.strokeStyle = "#24002a";
+        ctx.lineWidth = 6;
+        ctx.strokeText("Press start", canvas.width/2, canvas.height * 0.1);
+        ctx.shadowBlur = 20; 
+        ctx.fillStyle = "#d7b3ff";
+
+        ctx.fillText("Press start", canvas.width/2, canvas.height * 0.1);
+}
+
+function startGame() {
+        inGame = true;
+        button.remove();
+
+        draw();
+}
+
+function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff, it worked idk why but it does work
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
@@ -64,7 +99,7 @@ window.addEventListener('deviceorientation', (e) => {
 
         player.x = Math.max(player.radius, Math.min(canvas.width  - player.radius, player.x));
 
-        draw();
+        if (inGame) { draw(); } else { drawPause(); }
 });
 
-draw();
+drawPause();
