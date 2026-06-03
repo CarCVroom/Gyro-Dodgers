@@ -13,6 +13,8 @@ console.log(isMobile)
 
 if (!isMobile) { // checks if device is PC
         drawNotOnMobile();
+} else { 
+        drawPause();
 }
 
 const ctx = canvas.getContext('2d');
@@ -121,5 +123,3 @@ window.addEventListener('deviceorientation', (e) => {
 
         if (inGame) { draw(); } else { drawPause(); }
 });
-
-drawPause();
