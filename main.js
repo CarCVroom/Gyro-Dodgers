@@ -11,13 +11,13 @@ let inGame = false;
 let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 console.log(isMobile)
 
+const ctx = canvas.getContext('2d');
+
 if (!isMobile) { // checks if device is PC
         drawNotOnMobile();
 } else { 
         drawPause();
 }
-
-const ctx = canvas.getContext('2d');
 
 const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 33 };
 
