@@ -46,7 +46,7 @@ function drawNotOnMobile() {
         ctx.strokeStyle = "#24002a";
         ctx.lineWidth = 6;
         ctx.strokeText("Please use your mobile phone, and hold it vertical", canvas.width/2, canvas.height * 0.1);
-        ctx.shadowBlur = 20; 
+        ctx.shadowBlur = 20;
         ctx.fillStyle = "#d7b3ff";
 
         ctx.fillText("Please use your mobile phone, and hold it vertical", canvas.width/2, canvas.height * 0.1);
@@ -55,7 +55,7 @@ function drawNotOnMobile() {
 function drawPause() {
         divWithCan.appendChild(button);
         inGame = false;
-        ctx.clearRect(0,0, canvas.width, canvas.height);  
+        ctx.clearRect(0,0, canvas.width, canvas.height);
 
         ctx.drawImage(bgimg, 0, bgY, canvas.width, canvas.height);
         ctx.font = "65px Oxanium";
@@ -68,10 +68,10 @@ function drawPause() {
         ctx.strokeStyle = "#24002a";
         ctx.lineWidth = 6;
         ctx.strokeText("Press start", canvas.width/2, canvas.height * 0.1);
-        ctx.shadowBlur = 20; 
+        ctx.shadowBlur = 20;
         ctx.fillStyle = "#d7b3ff";
 
-        ctx.fillText("Press start", canvas.width/2, canvas.height * 0.1);
+        ctx.fillText("Press start", canvas.width / 2, canvas.height * 0.1);
 }
 
 function startGame() {
@@ -109,13 +109,13 @@ window.addEventListener('deviceorientation', (e) => {
         if (e.gamma > 15) {
                 player.x += 2;
         }
-        
+
         gammaMeter.textContent = `Gamma: ${e.gamma}`;
         betaMeter.textContent = `Beta: ${e.beta}`;
 
         player.x = Math.max(player.radius, Math.min(canvas.width  - player.radius, player.x));
 
-        if (inGame) { draw(); } else { drawPause(); }
+        if (inGame) { draw(); } else { drawPause(); } // Test with lf // test again // hi // god
 });
 
 window.onload = function() {
@@ -124,7 +124,7 @@ window.onload = function() {
         console.log("loaded", bgimg.width, bgimg.height);
         if (!isMobile) { // checks if device is PC
                 drawNotOnMobile();
-        } else { 
+        } else {
                 drawPause();
         }
 }
