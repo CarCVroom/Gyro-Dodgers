@@ -2,6 +2,7 @@ const gammaMeter = document.getElementById('gammaMeter');
 const betaMeter = document.getElementById('betaMeter');
 const canvas = document.getElementById('gameCenter');
 const button = document.getElementById('controls');
+const divWithCan = document.getElementById('divWithCan');
 console.log(canvas.width, canvas.height);
 
 let inGame = false;
@@ -31,6 +32,7 @@ let bgY = 0;
 const bgSpeed = 0.35;
 
 function drawNotOnMobile() {
+        button.remove();
         ctx.clearRect(0,0, canvas.width, canvas.height);
 
         ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
@@ -51,6 +53,7 @@ function drawNotOnMobile() {
 }
 
 function drawPause() {
+        divWithCan.appendChild(button);
         inGame = false;
         ctx.clearRect(0,0, canvas.width, canvas.height);  
 
