@@ -12,7 +12,7 @@ let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 console.log(isMobile)
 
 if (!isMobile) { // checks if device is PC
-        //alert("Please use a phone")
+        drawNotOnMobile();
 }
 
 const ctx = canvas.getContext('2d');
@@ -36,6 +36,26 @@ window.onload = function() {
 
 let bgY = 0;
 const bgSpeed = 0.35;
+
+function drawNotOnMobile() {
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+
+        ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
+        ctx.font = '75px Oxnaium';
+        ctx.fillStyle = '#d7b3ff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+
+        ctx.shadowColor = '#b000ff'
+        ctx.shadowBlur = 30;
+        ctx.strokeStyle = "#24002a";
+        ctx.lineWidth = 6;
+        ctx.strokeText("Please use your mobile phone, and hold it vertical", canvas.width/2, canvas.height * 0.1);
+        ctx.shadowBlur = 20; 
+        ctx.fillStyle = "#d7b3ff";
+
+        ctx.fillText("Please use your mobile phone, and hold it vertical", canvas.width/2, canvas.height * 0.1);
+}
 
 function drawPause() {
         inGame = false;
