@@ -2,8 +2,6 @@ const gammaMeter = document.getElementById('gammaMeter');
 const betaMeter = document.getElementById('betaMeter');
 const canvas = document.getElementById('gameCenter');
 const button = document.getElementById('controls');
-canvas.width = canvas.offsetWidth;
-canvas.height = 500;
 console.log(canvas.width, canvas.height);
 
 let inGame = false;
@@ -13,13 +11,8 @@ console.log(isMobile)
 
 const ctx = canvas.getContext('2d');
 
-if (!isMobile) { // checks if device is PC
-        drawNotOnMobile();
-} else { 
-        drawPause();
-}
-
 const player = { x: canvas.width/2 , y:canvas.height * 0.8, radius: 33 };
+const asteriod = { x: 0, y: 0, radius: 40 };
 
 const playerSprite = new Image();
 playerSprite.src = './assets/playerModel2.png';
@@ -31,10 +24,8 @@ bgimg2.src = './assets/gameBackground2.png';
 const bgimg3 = new Image();
 bgimg3.src = './assets/gameBackground3.png';
 
-window.onload = function() {
-        console.log("loaded", bgimg.width, bgimg.height);
-        drawPause();
-}
+const asteriodSprite = new Image();
+asteriodSprite.src = './assets/asterioed.png';
 
 let bgY = 0;
 const bgSpeed = 0.35;
@@ -123,3 +114,14 @@ window.addEventListener('deviceorientation', (e) => {
 
         if (inGame) { draw(); } else { drawPause(); }
 });
+
+window.onload = function() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = 500;
+        console.log("loaded", bgimg.width, bgimg.height);
+        if (!isMobile) { // checks if device is PC
+                drawNotOnMobile();
+        } else { 
+                drawPause();
+        }
+}
