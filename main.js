@@ -50,13 +50,13 @@ function drawNotOnMobile() {
         ctx.shadowBlur = 30;
         ctx.strokeStyle = "#24002a";
         ctx.lineWidth = 6;
-        ctx.strokeText(line1, canvas.width / 2, y);
-        ctx.strokeText(line2, canvas.width / 2, y + lineHeight);
+        ctx.strokeText(line1, canvas.width / 2, lineY);
+        ctx.strokeText(line2, canvas.width / 2, lineY + lineHeight);
         ctx.shadowBlur = 20;
         ctx.fillStyle = "#d7b3ff";
 
-        ctx.fillText(line1, canvas.width / 2, y);
-        ctx.fillText(line2, canvas.width / 2, y + lineHeight);
+        ctx.fillText(line1, canvas.width / 2, lineY);
+        ctx.fillText(line2, canvas.width / 2, lineY + lineHeight);
 }
 
 function drawPause() {
