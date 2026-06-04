@@ -7,7 +7,7 @@ console.log(canvas.width, canvas.height);
 
 const line1 = 'Please use your phone,';
 const line2 = 'and hold it vertically';
-const lineHeight = 60;
+const lineHeight = 80;
 const lineY = canvas.height * 0.1;
 
 let inGame = false;
