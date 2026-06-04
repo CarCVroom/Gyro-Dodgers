@@ -5,6 +5,11 @@ const button = document.getElementById('controls');
 const divWithCan = document.getElementById('divWithCan');
 console.log(canvas.width, canvas.height);
 
+const line1 = 'Please use your phone,';
+const line2 = 'and hold it vertically';
+const lineHeight = 60;
+const lineY = canvas.height * 0.1;
+
 let inGame = false;
 
 let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -45,11 +50,13 @@ function drawNotOnMobile() {
         ctx.shadowBlur = 30;
         ctx.strokeStyle = "#24002a";
         ctx.lineWidth = 6;
-        ctx.strokeText(`Please use your mobile phone,\nand hold it vertical`, canvas.width/2, canvas.height * 0.1);
+        ctx.strokeText(line1, canvas.width / 2, y);
+        ctx.strokeText(line2, canvas.width / 2, y + lineHeight);
         ctx.shadowBlur = 20;
         ctx.fillStyle = "#d7b3ff";
 
-        ctx.fillText(`Please use your mobile phone,\nand hold it vertical`, canvas.width / 2, canvas.height * 0.1);
+        ctx.fillText(line1, canvas.width / 2, y);
+        ctx.fillText(line2, canvas.width / 2, y + lineHeight);
 }
 
 function drawPause() {
