@@ -117,6 +117,15 @@ window.addEventListener('deviceorientation', (e) => {
                 player.x += 2;
         }
 
+        if (e.beta > 15) {
+                bgSpeed += 0.02; // Should make background go faster/slower,
+                                 // might make it go very fast.
+        }
+
+        if (e.beta < - 15) {
+                bgSpeed -= 0.02;
+        }
+
         gammaMeter.textContent = `Gamma: ${e.gamma}`;
         betaMeter.textContent = `Beta: ${e.beta}`;
 
