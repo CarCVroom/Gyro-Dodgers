@@ -45,11 +45,13 @@ function drawNotOnMobile() {
         ctx.shadowBlur = 30;
         ctx.strokeStyle = "#24002a";
         ctx.lineWidth = 6;
-        ctx.strokeText("Please use your mobile phone, and hold it vertical", canvas.width/2, canvas.height * 0.1);
+        ctx.strokeText(`Please use your mobile phone,
+                        and hold it vertical`, canvas.width / 2, canvas.height * 0.1);
         ctx.shadowBlur = 20;
         ctx.fillStyle = "#d7b3ff";
 
-        ctx.fillText("Please use your mobile phone, and hold it vertical", canvas.width/2, canvas.height * 0.1);
+        ctx.fillText(`Please use your mobile phone,
+                      and hold it vertical`, canvas.width / 2, canvas.height * 0.1);
 }
 
 function drawPause() {
