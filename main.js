@@ -29,10 +29,10 @@ const bgimg3 = new Image();
 bgimg3.src = './assets/gameBackground3.png';
 
 const asteriodSprite = new Image();
-asteriodSprite.src = './assets/asterioed.png';
+asteriodSprite.src = './assets/asteroied.png';
 
 let bgY = 0;
-const bgSpeed = 0.35;
+let bgSpeed = 0.35;
 
 function drawNotOnMobile() {
         button.remove();
@@ -83,10 +83,14 @@ function startGame() {
         inGame = true;
         button.remove();
 
-        draw();
+        requestAnimationFrame(draw);
 }
 
 function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff, it worked idk why but it does work
+        if (!inGame) return;
+        let asteriodSpawnPos = Math.floor(Math.random() * (canvas.width - asteriod.radius * 2) + asteriod.radius)
+        let randomNRForSpawnCadence = Math.floor(Math.random() * 100) // Random number
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.drawImage(bgimg2, 0, bgY, canvas.width, canvas.height);
@@ -98,6 +102,12 @@ function draw() { // if 3 hits floor 1 and 2 go over to og spots and do stuff, i
         if (bgY >= 2 * canvas.height) { bgY = 0 } // omg it works bruh.
 
         ctx.drawImage(playerSprite, player.x - player.radius, player.y - player.radius, player.radius * 2, player.radius * 2);
+
+        if (randomNRForSpawnCadence === 4) {
+                ctx.drawImage(asteriodSprite, asteriodSpawnPos, bgY, asteriod.radius * 2, asteriod.radius * 2);
+        }
+
+        requestAnimationFrame(draw)
 }
 
 window.addEventListener('resize', () => {
@@ -115,21 +125,22 @@ window.addEventListener('deviceorientation', (e) => {
                 player.x += 2;
         }
 
-        if (e.beta > 15) {
-                bgSpeed += 0.02; // Should make background go faster/slower,
+        if (e.beta > 20) {
+                bgSpeed -= 0.02; // Should make background go faster/slower,
                                  // might make it go very fast.
         }
 
-        if (e.beta < - 15) {
-                bgSpeed -= 0.02;
+        if (e.beta < - 5) {
+                bgSpeed += 0.02;
         }
+
+        bgSpeed = Math.max(0.1, Math.min(bgSpeed, 8.0));
 
         gammaMeter.textContent = `Gamma: ${e.gamma}`;
         betaMeter.textContent = `Beta: ${e.beta}`;
 
         player.x = Math.max(player.radius, Math.min(canvas.width  - player.radius, player.x));
 
-        if (inGame) { draw(); } else { drawPause(); } // Test with lf // test again // hi // god
 });
 
 window.onload = function() {
