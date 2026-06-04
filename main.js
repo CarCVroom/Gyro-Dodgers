@@ -3,7 +3,6 @@ const betaMeter = document.getElementById('betaMeter');
 const canvas = document.getElementById('gameCenter');
 const button = document.getElementById('controls');
 const divWithCan = document.getElementById('divWithCan');
-console.log(canvas.width, canvas.height);
 
 const line1 = 'Please use your phone,';
 const line2 = 'and hold it vertically';
@@ -13,7 +12,6 @@ const lineY = canvas.height * 0.1;
 let inGame = false;
 
 let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-console.log(isMobile)
 
 const ctx = canvas.getContext('2d');
 
@@ -137,7 +135,6 @@ window.addEventListener('deviceorientation', (e) => {
 window.onload = function() {
         canvas.width = canvas.offsetWidth;
         canvas.height = 500;
-        console.log("loaded", bgimg.width, bgimg.height);
         if (!isMobile) { // checks if device is PC
                 drawNotOnMobile();
         } else {
