@@ -117,20 +117,20 @@ window.addEventListener('resize', () => {
 window.addEventListener('deviceorientation', (e) => {
         const { alpha, beta, gamma } = e;
 
-        if (e.gamma < - 15) {
+        if (e.gamma < - 15 && inGame) {
                 player.x -= 2;
         }
 
-        if (e.gamma > 15) {
+        if (e.gamma > 15 && inGame) {
                 player.x += 2;
         }
 
-        if (e.beta > 20) {
+        if (e.beta > 20 && inGame) {
                 bgSpeed -= 0.02; // Should make background go faster/slower,
                                  // might make it go very fast.
         }
 
-        if (e.beta < - 5) {
+        if (e.beta < - 5 && inGame) {
                 bgSpeed += 0.02;
         }
 
